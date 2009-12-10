@@ -1,0 +1,13 @@
+project treehug ;
+
+using doxygen ;
+
+exe treehug
+    : [ glob src/*.cc ]
+    : <cxxflags>-std=c++0x ;
+
+install bin : treehug ;
+
+doxygen treehug.html
+    : [ glob src/*.h src/*.cc ]
+    : <location>doc ;
